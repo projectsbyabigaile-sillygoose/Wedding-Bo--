@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Wedding To-Dos</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="wedding.css">
+</head>
+<body>
+<div id="text">
+  <h2>Days Til The Wedding:</h2>
+</div>
+    <div id="countdown">
+    <p id="countdown"></p>
+    <br>
+</div>
+<section id="checklist">
+    <h3>Tasks to Complete</h3>
+
+    <div class="columns">
+        <!-- Bride column -->
+        <div class="column">
+            <h6 id="bride"><em>For the Bride</em></h6>
+            <ul class="bridelist1">
+                <li>
+                    <label>
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        Take dress to the tailor
+                    </label>
+                </li>
+            </ul>
+            <ul id="brideTasks"></ul>
+        </div>
+
+        <!-- Groom column -->
+        <div class="column">
+            <h6 id="groom"><em>For the Groom</em></h6>
+            <ul id="groomTasks"></ul>
+        </div>
+    </div>
+</section>
+
+<!-- Form to add new tasks -->
+<div id="form">
+    <form id="addToDo">
+        <label for="task">Create a New Task:</label>
+        <input type="text" id="task" required>
+        <br>
+        <label for="assignee">Assign To:</label>
+        <select id="assignee">
+            <option value="bride">Bride</option>
+            <option value="groom">Groom</option>
+        </select>
+        <br>
+        <button type="submit">Create Task</button>
+    </form>
+</div>
+
+<script src="wedding.js"></script>
+</body>
+</html>
