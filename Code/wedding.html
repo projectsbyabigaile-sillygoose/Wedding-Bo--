@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>My Wedding To-Dos</title>
+<!-- no index tag -->
+        <meta name="robots" content="noindex, nofollow">;
+<!-- Password -->
+        <script>
+            const password = "yourpassword";
+            
+            const userInput = prompt("What's the Password Foo:");
+            if (userInput !== password) {
+                document.body.innerHTML = "<h1>WOMP WOMP U GOT IT WRONG</h1>";
+            }
+
+        </script>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="wedding.css">
+    </head>
+<body>
+   <a class="checklist1">
+    <h3>Bridal Details</h3>
+     <ul class="bridelist1">
+        <li>
+            <label>
+                <input type="checkbox">
+                <span class="checkmark"></span>
+                Take dress to the tailor
+            </label>
+        </li>
+     </ul>
+   </a> 
+   <a class="form"
+    <form id="addToDo">
+        <label for="task">Crate a New Task:</label>
+         <input type="text" id="Task" required>
+        <label for="category">Category:</label>
+         <option value="bridal-details">Bridal Details</option>
+         <option value="groom-details">Groom Details</option>
+        <button type="submit">Create Task</button>
+    </form>
+
+<!-- Linked JavaScript File -->
+
+<script src="wedding.js"></script>
+
+</body>
+</html>

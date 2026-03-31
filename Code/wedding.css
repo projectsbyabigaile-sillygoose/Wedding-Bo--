@@ -1,0 +1,11 @@
+/*begin CSS code*/
+body {
+    font-size: 12px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: #ffffff;
+    color: black;
+}
+
+ul {
+    list-style-type: none;
+}
