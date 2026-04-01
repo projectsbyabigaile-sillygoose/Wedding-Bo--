@@ -21,7 +21,6 @@ const timer = setInterval(() => {
     }
 }, 1000);
 
-// Select form element
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('addToDo');
     const input = document.getElementById('task');
@@ -29,43 +28,71 @@ document.addEventListener('DOMContentLoaded', function() {
     const brideList = document.getElementById('brideTasks');
     const groomList = document.getElementById('groomTasks');
 
+    // Load saved tasks when page opens
+    loadTasks();
+
     form.addEventListener('submit', function(event) {
         event.preventDefault();
 
         const taskText = input.value.trim();
         if (taskText === '') return;
 
+        const assignee = assigneeSelect.value;
+
+        const task = {
+            text: taskText,
+            assignee: assignee
+        };
+
+        addTaskToDOM(task);
+        saveTask(task);
+
+        input.value = '';
+    });
+
+    function addTaskToDOM(task) {
         const li = document.createElement('li');
 
-        // Create checkbox
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
 
-        // Create task text
         const span = document.createElement('span');
-        span.textContent = taskText;
+        span.textContent = task.text;
 
-        // Create delete button
         const deleteBtn = document.createElement('button');
         deleteBtn.textContent = 'Delete';
         deleteBtn.style.marginLeft = '10px';
+
         deleteBtn.addEventListener('click', function() {
             li.remove();
+            removeTask(task);
         });
 
-        // Append elements to li
         li.appendChild(checkbox);
         li.appendChild(span);
         li.appendChild(deleteBtn);
 
-        // Append li to correct list
-        const assignee = assigneeSelect.value;
-        if (assignee === 'bride') {
+        if (task.assignee === 'bride') {
             brideList.appendChild(li);
         } else {
             groomList.appendChild(li);
         }
+    }
 
-        input.value = ''; // clear input
-    });
+    function saveTask(task) {
+        const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        tasks.push(task);
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+
+    function loadTasks() {
+        const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        tasks.forEach(task => addTaskToDOM(task));
+    }
+
+    function removeTask(taskToRemove) {
+        let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        tasks = tasks.filter(task => task.text !== taskToRemove.text);
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
 });
