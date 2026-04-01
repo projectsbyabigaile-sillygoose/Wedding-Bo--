@@ -1,3 +1,7 @@
+// Firebase Application
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getFirestore, collection, addDoc, onSnapshot, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
 // Set target date
 const target = new Date("May 28, 2026 15:30:00").getTime();
 
